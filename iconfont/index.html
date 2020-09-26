@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="mytest/iconfont.css">
+  <style>
+    .parent{
+      background-image:url(img/timg.jpg);
+      width:200px;
+      height:200px;
+      overflow:hidden;
+      position:relative;
+    }
+    .parent>.child{
+      width:200px;
+      font-size:50px;
+      color:orange;
+      background-color:rgba(55,55,55,.5);
+      text-align:center;
+      line-height:200px;
+      position:absolute;
+      /* 1. 定义要变化的元素的起始样式（带transition和overflow） */
+      bottom:-200px;
+      transition: all .5s linear;
+      /* display:none; */
+    }
+    /* 2. 定义要变化的元素的目标样式 */
+    .parent:hover>.child{
+      /* display:block;  */
+      bottom:0;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child iconfont icon-tubiaozhizuomobanyihuifu-"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+json-server
+一个在前端本地运行，专门模拟后端接口地址的可以存储json数据的简易版server
+今后，都是前后端分离方式开发
+1.前后端是完全独立的两个项目
+2.前后端两个项目时并行开发
+3.也就是说前端项目开发时，后端接口还没开发好呢
+4.此时就需要前端开发人员要最简单的方法，模拟出后端接口
+
+安装：npm install -g json-server
+
+定义db.json文件  基本格式 {
+                                           "接口名":[
+                                             {
+                                               第一个数据对象的属性和值
+                                                    }
+                                             ...  ...
+                                             ],
+                                           "接口名2":[
+                                            {
+                                              数据对象的属性和值
+                                            }
+                                            ...   ....
+                                            ]
+在db.json文件所在目录，运行json    json-server --watch --port 5050 db.json
+查看完整db.json    http://localhost:5050/db
+
+在json中_like是模糊查找
+不一定按照json-sever的路由来写
+专门用于查询数据
+http://localhost:5050/index
+带参数
+1.http://localhost:5050/details/1  直接返回一个id为1的一个商品对象
+2.http://localhost:5050/details?id=1 却只返回一个数组，包含查询到的对象
+解决办法：将？id=值的路由转化为路由  router.json  {"/details\\?id=:id":"/details/:id"}  但是服务器端不用id检索，
+而用lid检索{"/details\\?lid=:lid":"/details/:lid"}
+3.加载自定义路由   json-server --watch --port 5050 --routers router.json db.json
+4.模糊检索  http://localhost:5050/products?title_like=i7
+如果希望与服务器端kws参数保持一致，也可以用自定义路由将title_like转为kws
+{
+"/products\\?kws=:kws":"/products?title_like=:kws"
+}
+
+
+使用
+post 
+专门用于插入数据
+$("#postBtn").click(function(){
+  $ajax{
+    type:"post",
+    url:"http://localhost:3030/fruits",
+    data:{
+        name:$("#fruitName").val(),
+        price:$("#fruitprice").val()    
+},
+     sucess:function(data){
+         console.log("post sucess")
+},
+      error:function(){
+      alert("post error")
+}
+}
+})
+
+put   专门用于修改数据
+$("#putBtn").click(function(){
+  $ajax({
+    type:"put",
+    url:"http://localhost:3030/fruits/"+$("#putId").val(),
+    data:{
+    price:$("#putPrice").val()    
+},
+    success:function(data){
+    console.log("put success")
+},
+     error:function(){
+     alert("put error")
+}
+})
+})
+
+delete专门用于删除数据
+$("#delOne").click(function(){
+  $ajax({
+    type:"delete",
+    url:"http://localhost:3030/fruits/"+$("#delId").val(),
+    success:function(data){
+    console.log("del success")
+},
+     error:function(){
+     alert("del error")
+}
+})
+})
+ 强调：
+如果只是修改json文件中的内容，不用重启服务器
+post，put,delete操作都是直接修改硬盘上的db.json文件，所以，修改前，一定要做好备份！
+然后再做增加和删除工作
+json-sever是必备的内容
+
+                                        

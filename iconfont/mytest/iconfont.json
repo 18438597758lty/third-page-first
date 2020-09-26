@@ -1,0 +1,37 @@
+{
+  "id": "1625336",
+  "name": "mytest",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "579806",
+      "name": "后退",
+      "font_class": "houtui",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "4427392",
+      "name": "编辑",
+      "font_class": "tubiaozhizuomobanyihuifu-",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    },
+    {
+      "icon_id": "10258933",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "11230505",
+      "name": "dingweimian",
+      "font_class": "dingweimian",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    }
+  ]
+}
